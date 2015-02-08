@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Jenkins Configuration</title>
+
+    <link rel="stylesheet" href="/theme/css/normalize.css" />
+    <link rel="stylesheet" href="/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="/theme/css/style.css" />
+    <link rel="stylesheet" href="/theme/css/pygments.css" />	
+    <script src="/theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href="">LinbyndBlog</a></h1>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="/Jenkins.html" rel="bookmark"
+        title="Permalink to Jenkins Configuration">Jenkins Configuration</a></h3>
+    </header>
+
+<h6 class="subheader" title="2014-12-04T10:20:00+05:30">Thu 04 December 2014
+</h6>
+
+
+    <h3>Jenkins configuration</h3>
+<p>This contains ansible confifurations.</p>
+<p><img alt="mainfile" src="./images/01.png" /></p>
+<div class="highlight"><pre><span class="c">#!/bin/bash</span>
+
+<span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">define</span> <span class="s">&quot;consul-3&quot;</span> <span class="n">do</span> <span class="o">|</span><span class="n">consul</span><span class="o">|</span>
+    <span class="n">consul</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="s">&quot;centos6.5&quot;</span>
+    <span class="n">consul</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">host_name</span> <span class="o">=</span> <span class="s">&quot;consul-3.linbynd.local&quot;</span>
+    <span class="n">consul</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span> <span class="s">&quot;public_network&quot;</span><span class="p">,</span> <span class="n">ip</span><span class="p">:</span> <span class="s">&quot;192.168.1.72&quot;</span>
+<span class="n">end</span>
+
+<span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">define</span> <span class="s">&quot;consul-client&quot;</span> <span class="n">do</span> <span class="o">|</span><span class="n">consul</span><span class="o">|</span>
+    <span class="n">consul</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="s">&quot;centos6.5&quot;</span>
+    <span class="n">consul</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">host_name</span> <span class="o">=</span> <span class="s">&quot;consul-client.linbynd.local&quot;</span>
+    <span class="n">consul</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">network</span> <span class="s">&quot;public_network&quot;</span><span class="p">,</span> <span class="n">ip</span><span class="p">:</span> <span class="s">&quot;192.168.1.73&quot;</span>
+<span class="n">end</span>
+<span class="c"># plugin conflict</span>
+<span class="k">if</span> <span class="n">Vagrant</span><span class="o">.</span><span class="n">has_plugin</span><span class="err">?</span><span class="p">(</span><span class="s">&quot;vagrant-vbguest&quot;</span><span class="p">)</span> <span class="n">then</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">vbguest</span><span class="o">.</span><span class="n">auto_update</span> <span class="o">=</span> <span class="n">false</span>
+<span class="n">end</span>
+<span class="n">end</span>
+</pre></div>
+<p class="subheader">Category: <a href="/category/ci-cd.html">CI / CD</a>
+
+    Tagged: 
+    <a href="/tag/pelican.html">pelican </a>
+    <a href="/tag/publishing.html">publishing </a>
+    <a href="/tag/ansible.html">Ansible </a>
+    <a href="/tag/ci.html">CI </a>
+    <a href="/tag/continous-integration.html">Continous Integration </a>
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="/archives.html">Archives</a>
+            <li><a href="/tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="/category/ci-cd.html">CI / CD</a></li>
+            <li><a href="/category/devops.html">Devops</a></li>
+            <li><a href="/category/tools.html">Tools</a></li>
+   
+        </ul>
+
+        <h5 class="sidebar-title">Links</h5>
+        <ul class="side-nav">
+            <li><a href="http://getpelican.com/">Pelican</a></li>
+            <li><a href="http://python.org/">Python.org</a></li>
+            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+            <li><a href="http://ansible.com/">Ansible</a></li>
+        </ul>
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="http://twitter.com/vini_tux">twitter</a></li>
+            <li><a href="http://es.linkedin.com/in/vinitkhandagle/en">linkedIn</a></li>
+            <li><a href="http://github.com/linbynd">github</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>LinbyndBlog by Vinit Khandagle</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
